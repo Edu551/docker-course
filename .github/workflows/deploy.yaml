@@ -10,7 +10,7 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-            - run: docker build -t eduardo/react-test -f ./complex/client/Dockerfile.dev ./client
+            - run: docker build -t eduardo/react-test -f ./complex/client/Dockerfile.dev ./complex/client
             - run: docker run -e CI=true eduardo/react-test npm test
 
             - run: docker build -t eduardo/multi-client-03-01 ./complex/client
