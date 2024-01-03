@@ -10,18 +10,18 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-            - run: docker build -t eduardo/react-test -f ./complex/client/Dockerfile.dev ./complex/client
-            - run: docker run -e CI=true eduardo/react-test npm test
+            - run: docker build -t eduardogoncalves551/react-test -f ./complex/client/Dockerfile.dev ./complex/client
+            - run: docker run -e CI=true eduardogoncalves551/react-test npm test
 
-            - run: docker build -t eduardo/multi-client-03-01 ./complex/client
-            - run: docker build -t eduardo/multi-nginx-03-01 ./complex/nginx
-            - run: docker build -t eduardo/multi-server-03-01 ./complex/server
-            - run: docker build -t eduardo/multi-worker-03-01 ./complex/worker
+            - run: docker build -t eduardogoncalves551/multi-client-03-01 ./complex/client
+            - run: docker build -t eduardogoncalves551/multi-nginx-03-01 ./complex/nginx
+            - run: docker build -t eduardogoncalves551/multi-server-03-01 ./complex/server
+            - run: docker build -t eduardogoncalves551/multi-worker-03-01 ./complex/worker
 
-            - run: docker push eduardo/multi-client-03-01
-            - run: docker push eduardo/multi-nginx-03-01
-            - run: docker push eduardo/multi-server-03-01
-            - run: docker push eduardo/multi-worker-03-01
+            - run: docker push eduardogoncalves551/multi-client-03-01
+            - run: docker push eduardogoncalves551/multi-nginx-03-01
+            - run: docker push eduardogoncalves551/multi-server-03-01
+            - run: docker push eduardogoncalves551/multi-worker-03-01
 
             - name: Generate deployment package
               run: zip -r deploy.zip . -x '*.git*'
@@ -31,9 +31,9 @@ jobs:
               with:
                   aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
                   aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-                  application_name: multi-gh
-                  environment_name: Multigh-env
-                  existing_bucket_name: elasticbeanstalk-us-east-1-923445559289
+                  application_name: multi-docker
+                  environment_name: Multi-docker-env
+                  existing_bucket_name: elasticbeanstalk-us-east-1-328672541305
                   region: us-east-1
                   version_label: ${{ github.sha }}
                   deployment_package: deploy.zip
