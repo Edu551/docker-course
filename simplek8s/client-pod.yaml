@@ -7,6 +7,13 @@ metadata:
 spec:
     containers:
         - name: client
-          image: stephengrider/multi-client
+          image: stephengrider/multi-worker
           ports:
               - containerPort: 3000
+# To update the kubernete pod use this command
+# kubectl apply -f <filename>
+
+# Get detailed info about an object. <object name> is optional.
+# kubectl describe <object type> <object name>
+
+# kubectl delete -f <config file>

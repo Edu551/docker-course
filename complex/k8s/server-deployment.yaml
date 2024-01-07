@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: server-deployment
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            component: server
+    template:
+        metadata:
+            labels:
+                component: server
+        spec:
+            containers:
+                - name: server
+                  image: eduardogoncalves551/multi-server-03-01
+                  ports:
+                      - containerPort: 5000
+# kubectl apply -f k8s ==> Apply all the files inside the folder k8s

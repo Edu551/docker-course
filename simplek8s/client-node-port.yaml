@@ -11,3 +11,6 @@ spec:
           nodePort: 31515
     selector:
         component: web
+# kubectl cluster-info
+# kubectl apply -f <filename>
+# kubectl get pods

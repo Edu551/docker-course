@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: client-deployment
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            component: web
+    template:
+        metadata:
+            labels:
+                component: web
+        spec:
+            containers:
+                - name: client
+                  image: stephengrider/multi-client
+                  ports:
+                      - containerPort: 3000
+# kubectl set image <object_type>/<object_name> <container_name>=<new image to use>
+# <new image to use> ==> stephengrider/multi-client:v5
+
+# kubectl delete -f client-deployment.yaml
+# kubectl delete -f client-node-port.yaml
+
+# stop all containers running
+# docker stop $(docker ps -q)
