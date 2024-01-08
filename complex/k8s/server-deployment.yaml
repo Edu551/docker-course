@@ -14,7 +14,30 @@ spec:
         spec:
             containers:
                 - name: server
-                  image: eduardogoncalves551/multi-server-03-01
+                  image: rallycoding/multi-server
                   ports:
                       - containerPort: 5000
+                  env:
+                      - name: REDIS_HOST
+                        # Name of the clusterIP
+                        value: redis-cluster-ip-service
+                      - name: REDIS_PORT
+                        value: "6379"
+                      - name: PGUSER
+                        value: postgres
+                      - name: PGHOST
+                        value: postgres-cluster-ip-service
+                      - name: PGPORT
+                        value: "5432"
+                      - name: PGDATABASE
+                        value: postgres
+                      - name: PGPASSWORD
+                        valueFrom:
+                            secretKeyRef:
+                                name: pgpassword
+                                key: PGPASSWORD
 # kubectl apply -f k8s ==> Apply all the files inside the folder k8s
+# -------
+# Command to create PGPASSWORD as a k8s object of type secrets. Need to run on PROD
+# kubectl create secret generic <secret_name> --from-literal key=value
+# kubectl create secret generic pgpassword --from-literal PGPASSWORD=postgre123

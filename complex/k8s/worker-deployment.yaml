@@ -15,4 +15,10 @@ spec:
             containers:
                 - name: worker
                   image: eduardogoncalves551/multi-worker-03-01
+                  env:
+                      - name: REDIS_HOST
+                        # Name of the clusterIP
+                        value: redis-cluster-ip-service
+                      - name: REDIS_PORT
+                        value: "6379"
 # kubectl apply -f k8s ==> Apply all the files inside the folder k8s
