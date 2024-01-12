@@ -1,6 +1,6 @@
 # Docker and Kubernetes Learning Journey
 
-##Overview
+## Overview
 Welcome to my learning journey through the Docker and Kubernetes Mastery Course. This course covers Docker and Kubernetes, offering a hands-on guide to creating and deploying web applications efficiently.
 
 I started from scratch, understanding what containers are and how they work. I also learned to implement a robust CI + CD workflow using GitHub, Travis CI, and AWS.
